@@ -9,6 +9,12 @@
 
 # $ python3 ./rlenc.py <BIN FILENAME>
 
+# OR: $ python3 ./rlenc.py <BIN FILENAME> <BYTESREAD> <BYTEBOUNDARY>
+
+#    e.g. python3 ./rlenc.py file.bin 24 32
+#   will read the first 24 out of every 32 bytes
+#   from file.bin and compress it to file.rle.
+
 # (c) 2019 Ben Ferguson
 
 import os 
@@ -49,9 +55,18 @@ def compress(data):
                 i += 1
                 continue
         if char == data[i]:
-            count += 1
-            i += 1
-            continue 
+            if count < 255:
+                count += 1
+                i += 1
+                continue
+            else:
+                totalcount += count
+                o.append(bytes([char]))
+                o.append(bytes([char]))
+                o.append(bytes([count]))
+                count = 1
+                i += 1
+                continue
         else:
             # last char is no longer the same
             totalcount += count
