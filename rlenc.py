@@ -48,7 +48,10 @@ def compress(data):
     while i <= len(data):
         if i == len(data):
             o.append(bytes([char]))
-            totalcount += 1
+            totalcount += count
+            if count > 1:
+                o.append(bytes([char]))
+                o.append(bytes([count]))
             break
         if size > 0 and trim > 0:
             if (i % size) >= trim:
