@@ -3,7 +3,7 @@ RLE encoding for binary files using Python
 <br>
 Instructions are in the .py file header. Supports 2 RLE encoding methods.<br>
 <br>
-## Z80 Decryption Routine (tniasm)<br>
+## Z80 Decryption Routine - encryption method A (tniasm)<br>
 ```
 DecompressRLE:
 ;;;;;;;;;;;;;;
