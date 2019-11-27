@@ -25,14 +25,16 @@ input = sys.argv[1]
 
 algorithm = 0
 
-if len(sys.argv) == 1:
+def help_quit():
     print('Usage:\n $ python3 ./rlenc.py <BIN FILENAME>\nOptional usage:\n $ python3 ./rlenc.py <BIN FILENAME> <TRIM SIZE> <MATRIX SIZE>\n  where e.g. $ rlenc.py map1.bin 24 32\n  will only use the first 24 of every 32 bytes.\n\nFile will be output in .rle format.')
     sys.exit()
 
+if len(sys.argv) == 1:
+    help_quit()
+
 if len(sys.argv) == 3:
     if sys.argv[2] != "-b":
-        print('Usage:\n $ python3 ./rlenc.py <BIN FILENAME>\nOptional usage:\n $ python3 ./rlenc.py <BIN FILENAME> <TRIM SIZE> <MATRIX SIZE>\n  where e.g. $ rlenc.py map1.bin 24 32\n  will only use the first 24 of every 32 bytes.\n\nFile will be output in .rle format.')
-        sys.exit()
+        help_quit()
     else:
         algorithm = 1
 
@@ -46,8 +48,7 @@ if len(sys.argv) == 4:
     #print(trim, size)
 if len(sys.argv) == 5:
     if sys.argv[2] != "-b":
-        print('Usage:\n $ python3 ./rlenc.py <BIN FILENAME>\nOptional usage:\n $ python3 ./rlenc.py <BIN FILENAME> <TRIM SIZE> <MATRIX SIZE>\n  where e.g. $ rlenc.py map1.bin 24 32\n  will only use the first 24 of every 32 bytes.\n\nFile will be output in .rle format.')
-        sys.exit()
+        help_quit()
     else:
         algorithm = 1
         trim = int(sys.argv[3])
