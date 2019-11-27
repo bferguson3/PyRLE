@@ -4,7 +4,8 @@ RLE encoding for binary files using Python
 Instructions are in the .py file header. Supports 2 RLE encoding methods.<br>
 <br>
 ## Z80 Decryption Routine (tniasm)<br>
-`DecompressRLE:
+```
+DecompressRLE:
 ;;;;;;;;;;;;;;
     ;;;;
     ; HL - mem addr of compressed data 
@@ -52,4 +53,5 @@ Instructions are in the .py file header. Supports 2 RLE encoding methods.<br>
     cp b 
     jr nz, .loop_a
      ; call Page1MainROM    ; if necessary
-     ret`
+     ret
+     ```
